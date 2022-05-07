@@ -1,7 +1,8 @@
 sudo: required
+language: generic
 services:
   - docker
-before-install:
+before_install:
   - docker build -t ddocker -f Dockerfile.dev .
 script: 
-  - docker run ddocker npm run test -- --coverage
+  - docker run -r CI=true ddocker npm run test
